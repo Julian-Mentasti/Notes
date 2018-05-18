@@ -1,0 +1,73 @@
+# CSPC 221: Notes 1:
+
+Header file (the one that ends in .h) holds the API or what the class is supposed to do. 
+While the implementation file (the one that ends in .cpp) is where the behaviour is specified.
+
+An example of a header: Code 1.1
+
+```cpp
+#ifndef HSLAPIXEL_H
+#define HSLAPIXEL_H
+
+namespace cs221util {
+	class HSLAPixel {
+		public:	
+			HSLAPixel();
+			HSLAPixel(double hue, double saturation, double luminance);
+			HSLAPixel(double hue, double saturation, double luminance, double aplha);
+			double h;
+			double s;
+			double l;
+			double a;
+	};
+}
+
+#endif
+```
+An example of the related .cpp file: Code 1.2
+
+```cpp
+#include "HSLAPixel.h"
+
+namespace cs221util {
+	HSLAPixel::HSLAPixel() {
+		h = 0.0;
+		s = 0.0;
+		l = 1.0;
+		a = 1.0;
+	}
+
+	HSLAPixel::HSLAPixel(double hue, double saturation, double luminance) {
+		h = hue;
+		s = saturation;
+		l = luminance;
+		a = 1.0;
+	}	
+
+	HSLAPixel::HSLAPixel(double hue, double saturation, double luminance, double alpha) {
+		h = hue;
+		s = saturation;
+		l = luminance;
+		a = alpha;
+	}
+}
+```
+In code 1.1 you can see the fragment
+```cpp
+#ifndef HSLAPIXEL_H
+#define HSLAPIXEL_H
+//code
+#endif
+```
+These are the inclusion guards. 
+
+Moreover you will see the use of }; is exclusivie to when the class definitions end.
+
+While in code 1.2 you can see:
+```cpp
+#include "HSLAPixel.h"
+```
+Indicating the included headerfile. 
+
+You may also notice the use of a double colon :: and its the scope resolution operator.
+It says that it belongs to the class specified before. 
