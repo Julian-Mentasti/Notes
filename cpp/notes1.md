@@ -61,7 +61,7 @@ In code 1.1 you can see the fragment
 ```
 These are the inclusion guards. 
 
-Moreover you will see the use of }; is exclusivie to when the class definitions end.
+Moreover you will see the use of }; is exclusivie to when the class definitions ends.
 
 While in code 1.2 you can see:
 ```cpp
