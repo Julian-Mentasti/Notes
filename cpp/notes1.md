@@ -1,7 +1,6 @@
 # CSPC 221: Notes 1:
 
-Header file (the one that ends in .h) holds the API or what the class is supposed to do. 
-While the implementation file (the one that ends in .cpp) is where the behaviour is specified.
+Header file (the one that ends in .h) holds the API or what the class is supposed to do. While the implementation file (the one that ends in .cpp) is where the behaviour is specified.
 
 An example of a header: Code 1.1
 
@@ -69,5 +68,15 @@ While in code 1.2 you can see:
 ```
 Indicating the included headerfile. 
 
-You may also notice the use of a double colon :: and its the scope resolution operator.
-It says that it belongs to the class specified before.
+You may also notice the use of a double colon '::' and its the scope resolution operator. It says that it belongs to the class specified before.
+
+Now look at the following:
+
+```cpp
+#include "myclass.h" // (a)
+#include <iostream>  // (b)
+```
+
+The difference between a and b is that the first one is looking for the file in our own directory while the second looks in the system headers.
+
+### Constructors:
