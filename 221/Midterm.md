@@ -19,6 +19,7 @@
     2. [Doubly - the unorignal names](#subparagraph8)
 7. [Stacks](#paragraph6)
 8. [Queues](#paragraph7)
+9. [Further Reading](#paragraph8)
 
 
 ## Introduction <a name="introduction"></a>
@@ -90,3 +91,14 @@ Figure 3.4: Taken from NCZOnline.
 <p align="center">
   <img src="https://www.nczonline.net/images/wp-content/uploads/2012/11/quicksort_partition1.png">
 </p>
+
+Summary:
+
+| Algorithm     | Best           | Worst | Average | Memory Usage | Stable |
+|:-------------:|:----:|:-----------:|:-----------:|:-----------:|:-----:|:-----:|
+| Selection     | O(n) | O(n^2)      | O(n^2)      | O(1)        | Yes | Sometimes |
+| Insertion     | O(n) | O(n^2)      | O(n^2)      | O(1)        |Yes | Someties |
+| Merge | O(n log(n))  | O(n log(n)) | O(n log(n)) | O(log(n))   | No | Yes|
+| Quick | O(n log(n))  | O(n^2)      | O(n log(n)) | O(n log(n)) | Kinda | Sometimes |
+
+## Trees. <a name="paragraph3"></a>
