@@ -78,7 +78,7 @@ Merge Sort is defenetly not an in place algorithm but it is stable. Its best cas
 
 Figure 3.3: Taken from ROSALIND.
 <p align="center">
-  <img src="hblob:https://imgur.com/0e3de6de-c0b0-4f48-b718-942b7129f4e4">
+  <img src="https://i.imgur.com/9IC043f.png">
 </p>
 
 ### QuickSort - if quick attack was a sorting algorithm. <a name="subparagraph5"></a>
