@@ -22,7 +22,7 @@
 
 
 ## Introduction <a name="introduction"></a>
-These are my notes to help me revise for the upcoming midterm for 221. I hope you find these usefull. ALso I am known for having awful spelling.
+These are my notes to help me revise for the upcoming midterm for 221. I hope you find these usefull. Also I am known for having awful spelling.
 
 ## Big O Notation Rundown <a name="paragraph1"></a>
 Its a mathematical notation that decribes how a function can be limited when it tends towards infinity. More specifically, in computer science it is used to describe how the running time or space requirements of an algorithm increase with the growth of their input size. Big 'O' provides the upperbound of the growth rate of a function - 'Wost Case'. It can be expressed as f(n)=O(g(n)) where n is the size of the input. If there exists some constant c such that for all large enough n, f(n)≤ c*g(n), if the same holds for all c>0, then f(n)=O(g(n)).
