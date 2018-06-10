@@ -94,7 +94,7 @@ Figure 3.4: Taken from NCZOnline.
 
 Summary:
 
-| Algorithm     | Best           | Worst | Average | Memory Usage | Stable |
+| Algorithm     | Best | Worst       | Average     | Memory Usage| In Place |Stable |
 |:-------------:|:----:|:-----------:|:-----------:|:-----------:|:-----:|:-----:|
 | Selection     | O(n) | O(n^2)      | O(n^2)      | O(1)        | Yes | Sometimes |
 | Insertion     | O(n) | O(n^2)      | O(n^2)      | O(1)        |Yes | Someties |
