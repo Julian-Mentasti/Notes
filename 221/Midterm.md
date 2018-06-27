@@ -96,7 +96,7 @@ Summary:
 
 | Algorithm     | Best | Worst       | Average     | Memory Usage| In Place |Stable |
 |:-------------:|:----:|:-----------:|:-----------:|:-----------:|:-----:|:-----:|
-| Selection     | O(n) | O(n^2)      | O(n^2)      | O(1)        | Yes | Sometimes |
+| Selection     | O(n^2) | O(n^2)      | O(n^2)      | O(1)        | Yes | Sometimes |
 | Insertion     | O(n) | O(n^2)      | O(n^2)      | O(1)        |Yes | Sometimes |
 | Merge | O(n log(n))  | O(n log(n)) | O(n log(n)) | O(log(n))   | No | Yes|
 | Quick | O(n log(n))  | O(n^2)      | O(n log(n)) | O(n log(n)) | Kinda | Sometimes |
