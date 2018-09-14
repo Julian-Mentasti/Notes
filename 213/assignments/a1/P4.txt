@@ -1,0 +1,40 @@
+Some tests:
+
+jeffrey-hotzs-macbook:code jeffhotz$ java Endianness 1 2 3 4
+Memory Contents
+  Addr   Value
+    0:   0x1    
+    1:   0x2    
+    2:   0x3    
+    3:   0x4    
+The big    endian integer value at address 0 is 16909060
+The little endian integer value at address 0 is 67305985
+jeffrey-hotzs-macbook:code jeffhotz$ java Endianness FF FF FF FF
+Memory Contents
+  Addr   Value
+    0:   0xff   
+    1:   0xff   
+    2:   0xff   
+    3:   0xff   
+The big    endian integer value at address 0 is -1
+The little endian integer value at address 0 is -1
+jeffrey-hotzs-macbook:code jeffhotz$ java Endianness 0 0 FF 00
+Memory Contents
+  Addr   Value
+    0:   0x0    
+    1:   0x0    
+    2:   0xff   
+    3:   0x0    
+The big    endian integer value at address 0 is 65280
+The little endian integer value at address 0 is 16711680
+jeffrey-hotzs-macbook:code jeffhotz$ java Endianness 0 0 0 80
+Memory Contents
+  Addr   Value
+    0:   0x0    
+    1:   0x0    
+    2:   0x0    
+    3:   0x80   
+The big    endian integer value at address 0 is 128
+The little endian integer value at address 0 is -2147483648
+jeffrey-hotzs-macbook:code jeffhotz$ 
+

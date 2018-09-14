@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58267592-57bd-45d8-a9c6-4dafc23f3f77" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SM213.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleMachineStudent213.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleMachineStudentDoc213.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleMachineStudentSrc213.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/arch/sm213/machine/student/CPU.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/arch/sm213/machine/student/MainMemory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/arch/sm213/machine/student/VirtualMemoryCPU.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arch/sm213/machine/student/CPU.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arch/sm213/machine/student/VirtualMemoryCPU.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignments/P3Q3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../assignments/P3Q3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,7 +51,6 @@
     <session id="-96203033">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.opened" value="2" />
@@ -90,7 +79,60 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/SM213.iml">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemoryTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="390">
+                  <caret line="170" selection-start-line="170" selection-end-line="170" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemoryTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="306">
+                  <caret line="138" column="29" selection-start-line="138" selection-start-column="29" selection-end-line="138" selection-end-column="29" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="410">
+                  <caret line="84" selection-start-line="84" selection-end-line="84" />
+                  <folding>
+                    <element signature="e#366#367#0" expanded="true" />
+                    <element signature="e#405#406#0" expanded="true" />
+                    <element signature="e#659#660#0" expanded="true" />
+                    <element signature="e#691#692#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -157,7 +199,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536946100434" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536946096167" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -260,11 +302,14 @@
       <workItem from="1536788371927" duration="1056000" />
       <workItem from="1536856204119" duration="4625000" />
       <workItem from="1536865269118" duration="4279000" />
-      <workItem from="1536940824853" duration="5870000" />
+      <workItem from="1536940824853" duration="5246000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
+    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 07m 38s.xml">
+      <configuration name="MainMemoryTest" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="MainMemoryTest - 2018.09.14 at 10h 07m 56s.xml">
       <configuration name="MainMemoryTest" configurationId="JUnit" />
     </history-entry>
@@ -292,15 +337,13 @@
     <history-entry file="MainMemoryTest - 2018.09.14 at 10h 23m 40s.xml">
       <configuration name="MainMemoryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 28m 17s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15830000" />
+    <option name="totallyTimeSpent" value="15206000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1054" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16080937" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -312,7 +355,7 @@
       <window_info id="UI Designer" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.1923077" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1923077" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39957264" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

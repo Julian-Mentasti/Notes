@@ -1,4 +1,4 @@
-public class helloworld {
+public class HelloWorld {
     public static void main(String[] args) {
         System.out.println("Hello World");
         if ((args.length == 0) || (args.length > 1)) {
@@ -18,7 +18,6 @@ public class helloworld {
         System.out.println("hexadecimal representation: 0x" + hex_number);
         System.out.println("binary representation:      " + binary_number);
         
-        System.out.println(arg_integer);
     
     }
 }

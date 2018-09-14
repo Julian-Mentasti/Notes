@@ -1,0 +1,3 @@
+AA BB BB AA
+This can be generalised where a value has a point of symmetry at its center
+Basically a palindrome. 

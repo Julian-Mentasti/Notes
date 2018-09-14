@@ -19,32 +19,32 @@ public class MainMemory extends AbstractMainMemory {
   public MainMemory (int byteCapacity) {
     mem = new byte [byteCapacity];
   }
-  
-  /**
-   * Determine whether an address is aligned to specified length.
-   * @param address memory address.
-   * @param length byte length.
-   * @return true iff address is aligned to length.
-   */
-  @Override protected boolean isAccessAligned (int address, int length) {
-    return address % length == 0;
-  }
-  
-  /**
-   * Convert an sequence of four bytes into a Big Endian integer.
-   * @param byteAtAddrPlus0 value of byte with lowest memory address (base address).
-   * @param byteAtAddrPlus1 value of byte at base address plus 1.
-   * @param byteAtAddrPlus2 value of byte at base address plus 2.
-   * @param byteAtAddrPlus3 value of byte at base address plus 3 (highest memory address).
-   * @return Big Endian integer formed by these four bytes.
-   */
-  @Override public int bytesToInteger (byte byteAtAddrPlus0, byte byteAtAddrPlus1, byte byteAtAddrPlus2, byte byteAtAddrPlus3) {
-    int integer = byteAtAddrPlus0;
-    integer = (integer << 8) | byteAtAddrPlus1;
-    integer = (integer << 8) | byteAtAddrPlus2;
-    integer = (integer << 8) | byteAtAddrPlus3;
 
-    return integer;
+/**
+* Determine whether an address is aligned to specified length.
+* @param address memory address.
+* @param length byte length.
+* @return true iff address is aligned to length.
+*/
+@Override protected boolean isAccessAligned (int address, int length) {
+return address % length == 0;
+}
+
+/**
+* Convert an sequence of four bytes into a Big Endian integer.
+* @param byteAtAddrPlus0 value of byte with lowest memory address (base address).
+* @param byteAtAddrPlus1 value of byte at base address plus 1.
+* @param byteAtAddrPlus2 value of byte at base address plus 2.
+* @param byteAtAddrPlus3 value of byte at base address plus 3 (highest memory address).
+* @return Big Endian integer formed by these four bytes.
+*/
+@Override public int bytesToInteger (byte byteAtAddrPlus0, byte byteAtAddrPlus1, byte byteAtAddrPlus2, byte byteAtAddrPlus3) {
+long integer = (byteAtAddrPlus0 & 0xff);
+integer = (integer << 8) | (byteAtAddrPlus1 & 0xff);
+integer = (integer << 8) | (byteAtAddrPlus2 & 0xff);
+integer = (integer << 8) | (byteAtAddrPlus3 & 0xff);
+
+return (int) integer;
   }
   
   /**
@@ -72,6 +72,10 @@ public class MainMemory extends AbstractMainMemory {
    * @return an array of byte where [0] is memory value at address, [1] is memory value at address+1 etc.
    */
   @Override protected byte[] get (int address, int length) throws InvalidAddressException {
+  
+    if (address < 0) {
+        throw new InvalidAddressException();
+    }
     if (length() < (length + address)) {
       throw new InvalidAddressException();
     }
@@ -91,6 +95,10 @@ public class MainMemory extends AbstractMainMemory {
    * @throws InvalidAddressException  if any address in the range address to address+value.length-1 is invalid.
    */
   @Override protected void set (int address, byte[] value) throws InvalidAddressException {
+    if (address < 0) {
+        throw new InvalidAddressException();
+    }
+  
     if (length() < (value.length + address)) {
       throw new InvalidAddressException();
     }
