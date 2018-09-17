@@ -1,0 +1,20 @@
+>>> from assignment import boxfilter
+>>> boxfilter(3)
+array([[0.11111111, 0.11111111, 0.11111111],
+       [0.11111111, 0.11111111, 0.11111111],
+       [0.11111111, 0.11111111, 0.11111111]])
+>>> boxfilter(4)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/julian/Notes/CPSC425/A1/assignment.py", line 13, in boxfilter
+    assert ((n%2) != 0), "Dimension must be odd"
+AssertionError: Dimension must be odd
+>>> boxfilter(5)
+array([[0.04, 0.04, 0.04, 0.04, 0.04],
+       [0.04, 0.04, 0.04, 0.04, 0.04],
+       [0.04, 0.04, 0.04, 0.04, 0.04],
+       [0.04, 0.04, 0.04, 0.04, 0.04],
+       [0.04, 0.04, 0.04, 0.04, 0.04]])
+>>> 
+
+
