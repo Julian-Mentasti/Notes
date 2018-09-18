@@ -12,3 +12,17 @@ else returns an AssertionError.
 def boxfilter(n):
     assert ((n%2) != 0), "Dimension must be odd"
     return np.full((n,n),(1/(n*n)))
+"""
+Returns an 
+"""
+def gauss1d(sigma):
+    length = 6*sigma
+    if (length%2)== 0:
+        array_length = length + 1
+    array = np.linspace(-(length/2),(length/2),array_length) *sigma
+
+                        #      (- x^2 / (2*sigma**2))
+    gauss_eq = lambda t: t**(-(t^2)/(2*sigma^2))
+    #scale = lambda x: x * 3
+    result = gauss_eq(array)
+    return result

@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58267592-57bd-45d8-a9c6-4dafc23f3f77" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SM213.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleMachineStudent213.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleMachineStudentDoc213.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleMachineStudentSrc213.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/arch/sm213/machine/student/CPU.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/arch/sm213/machine/student/MainMemory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/arch/sm213/machine/student/VirtualMemoryCPU.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arch/sm213/machine/student/CPU.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arch/sm213/machine/student/VirtualMemoryCPU.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignments/P3Q3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../assignments/P3Q3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SM213/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../assignments/SM213/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/SM213/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../assignments/SM213/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/SM213/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CPSC425/A1/assignment.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CPSC425/A1/assignment.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,87 +18,47 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="864135488">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="2219" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="2219" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="-96203033">
+    <session id="1047376726">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.12" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="3" />
+          <entry key="java" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="1267" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="1267" />
+          <entry key="JAVA" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-9">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding>
+                <element signature="e#366#367#0" expanded="true" />
+                <element signature="e#405#406#0" expanded="true" />
+                <element signature="e#659#660#0" expanded="true" />
+                <element signature="e#691#692#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java" />
-        <option value="$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemoryTest.java" />
-      </list>
-    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -116,10 +66,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="960" />
-    <option name="width" value="960" />
-    <option name="height" value="1053" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="260" />
+    <option name="y" value="21" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -127,8 +78,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -151,13 +100,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536946100434" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -175,7 +125,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MainMemoryTest">
+  <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -195,21 +145,6 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainMemoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SM213" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="arch.sm213.machine.student.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="arch.sm213.machine.student" />
-      <option name="MAIN_CLASS_NAME" value="arch.sm213.machine.student.MainMemoryTest" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -237,15 +172,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.SM213" />
-      <item itemvalue="JUnit.MainMemoryTest" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.MainMemoryTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -257,52 +183,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1483659061282</updated>
-      <workItem from="1536788371927" duration="1056000" />
-      <workItem from="1536856204119" duration="4625000" />
-      <workItem from="1536865269118" duration="4279000" />
-      <workItem from="1536940824853" duration="5870000" />
+      <workItem from="1537242173657" duration="921000" />
     </task>
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 07m 56s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 08m 43s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 09m 19s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 10m 10s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 12m 35s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 17m 44s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 18m 47s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 22m 36s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 23m 40s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 28m 17s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
-  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15830000" />
+    <option name="totallyTimeSpent" value="921000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1920" height="1054" extended-state="6" />
+    <frame x="260" y="21" width="1400" height="1000" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16080937" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Nl-Palette" order="3" />
@@ -310,18 +201,19 @@
       <window_info id="Image Layers" order="5" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="UI Designer" order="7" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.1923077" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39957264" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32879817" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32905984" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -331,7 +223,6 @@
       <window_info anchor="right" id="Properties" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="right" id="Database" order="9" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,42 +236,15 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/CPU.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1380">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/VirtualMemoryCPU.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SM213.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="-9">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="e#366#367#0" expanded="true" />
             <element signature="e#405#406#0" expanded="true" />
             <element signature="e#659#660#0" expanded="true" />
             <element signature="e#691#692#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="138" column="29" selection-start-line="138" selection-start-column="29" selection-end-line="138" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

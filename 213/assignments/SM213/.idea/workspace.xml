@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58267592-57bd-45d8-a9c6-4dafc23f3f77" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/arch/sm213/machine/student/MainMemory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CPSC425/A1/assignment.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CPSC425/A1/assignment.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,6 +74,15 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-339001362">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5">
@@ -90,7 +96,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemoryTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
+                <state relative-caret-position="2490">
                   <caret line="170" selection-start-line="170" selection-end-line="170" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -106,7 +112,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemoryTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
+                <state relative-caret-position="320">
                   <caret line="138" column="29" selection-start-line="138" selection-start-column="29" selection-end-line="138" selection-end-column="29" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -118,7 +124,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="410">
+                <state relative-caret-position="1200">
                   <caret line="84" selection-start-line="84" selection-end-line="84" />
                   <folding>
                     <element signature="e#366#367#0" expanded="true" />
@@ -142,7 +148,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -171,6 +177,7 @@
     <panes>
       <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -193,14 +200,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536946096167" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../sm-student-213-intellij" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -303,13 +309,11 @@
       <workItem from="1536856204119" duration="4625000" />
       <workItem from="1536865269118" duration="4279000" />
       <workItem from="1536940824853" duration="5246000" />
+      <workItem from="1537241566149" duration="517000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainMemoryTest - 2018.09.14 at 10h 07m 38s.xml">
-      <configuration name="MainMemoryTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MainMemoryTest - 2018.09.14 at 10h 07m 56s.xml">
       <configuration name="MainMemoryTest" configurationId="JUnit" />
     </history-entry>
@@ -337,15 +341,17 @@
     <history-entry file="MainMemoryTest - 2018.09.14 at 10h 23m 40s.xml">
       <configuration name="MainMemoryTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MainMemoryTest - 2018.09.17 at 20h 32m 54s.xml">
+      <configuration name="MainMemoryTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15206000" />
+    <option name="totallyTimeSpent" value="15723000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1054" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16080937" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16240682" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Nl-Palette" order="3" />
@@ -355,7 +361,7 @@
       <window_info id="UI Designer" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1923077" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.1923077" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39957264" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -405,25 +411,25 @@
     <entry file="file://$PROJECT_DIR$/SM213.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="138" column="29" selection-start-line="138" selection-start-column="29" selection-end-line="138" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
+        <state relative-caret-position="1200">
           <caret line="84" selection-start-line="84" selection-end-line="84" />
           <folding>
             <element signature="e#366#367#0" expanded="true" />
             <element signature="e#405#406#0" expanded="true" />
             <element signature="e#659#660#0" expanded="true" />
             <element signature="e#691#692#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/arch/sm213/machine/student/MainMemoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="138" column="29" selection-start-line="138" selection-start-column="29" selection-end-line="138" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
