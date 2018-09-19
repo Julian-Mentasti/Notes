@@ -17,17 +17,13 @@ int main (int argc, char* argv[]) {
         printf("invalid number of arguments, takes 1 number\n");
         return -1;
     }
-    /* strtol -> string to long */
+    
     a = strtol (argv[1], &ep, 10);
     if (*ep) {
         printf ("Argument is not a number\n");
         return -1;
     }
-
-    if (strtol(argv[1], &ep, 10) > 9 || strtol(argv[1], &ep, 10) < 0) {
-    printf("\ninvalid input\n");
-    return -1;
-    }
+    
     printf ("\nbefore foo()\n");
     
     printf("a: %d, b[%d]: %d\n", a, a, b[a]);
