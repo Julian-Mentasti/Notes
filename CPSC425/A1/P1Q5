@@ -1,0 +1,1 @@
+Since gaussian blur can be separated between the product of two functions. Then its possible to take fourier transformations of all the functions and simplify the convolution to a multiplication which can be done very efficiently. 
