@@ -49,27 +49,80 @@ def gaussconvolve2d(array,sigma):
     result = signal.convolve2d(array,filter,'same')
     return result
 
-"""
-Creates a hybrid image of sImg1 and SImg2, using the provided sigma for the filter, and saves it in file_name
-"""
-"""
-def createHybrid(sImg1, sImg2, file_name, sigma):
-    im1 = Image.open(sImg1)
-    im2 = Image.open(sImg2)
-  """
 
 """
-Returns a blured image array of the provided image using the provided sigma
+Returns a lowpass image array of the provided image using the provided sigma
 """
-def blurImage(im, sigma):
+def lowPass(im, sigma):
     #red, green, blue = im.split()
-    red, green, blue = np.split(im, 3, axis=2)
-    red = gaussconvolve2d(red,sigma) # Red
+    array = np.asarray(im)
+    blue = array[:,:,0]
+    green = array[:,:,1]
+    red =array[:,:,2]
+
     green = gaussconvolve2d(green,sigma) # Green
     blue = gaussconvolve2d(blue,sigma) # Blue
+    red = gaussconvolve2d(red,sigma) # Red
+  
+    width = array.shape[0]
+    height = array.shape[1]
 
-    #nim = Image.merge("RGB", [red, green, blue])
-    nim = np.concatenate((red, green, blue), axis=2)
-
-    return nim
+    rgbArray = np.zeros((width, height,3), 'uint8')
+    rgbArray[...,0] = blue
+    rgbArray[...,1] = green
+    rgbArray[...,2] = red
     
+    #image = Image.fromarray(rgbArray)
+    return rgbArray
+
+"""
+Returns a highpass image array of the provided image
+"""
+def highPass(im):
+    sigma = 6
+    lowPassArray = lowPass(im, sigma)
+    orignal = np.asarray(im)
+    
+    width = orignal.shape[0]
+    height = orignal.shape[1]
+
+    hf_array = (orignal - lowPassArray) # + np.full((width, height, 3), 128)
+    hf_array[hf_array < 0] = 0
+    result = hf_array.astype('uint8')
+    return result
+
+"""
+Returns a highpass image array of the provided image
+"""
+def highPass_filter(im):
+    sigma = 6
+    lowPassArray = lowPass(im, sigma)
+    orignal = np.asarray(im)
+    
+    width = orignal.shape[0]
+    height = orignal.shape[1]
+
+    hf_array = (orignal - lowPassArray)
+    return hf_array
+
+"""
+Returns a hybrid image of the first image as a low pass and the second as highpass 
+"""
+def hybrid(im1, im2):
+
+    im1_lp = lowPass(im1, 6)
+    im2_hp = highPass(im2)
+
+    final = im1_lp + im2_hp 
+
+    return final
+
+def doEverything():
+    dog = Image.open("dog.jpg")
+    cat = Image.open("cat.bmp")
+    res = hybrid(dog, cat)
+    res = res.clip(min=0)
+    res = res.clip(max=255)
+    image = Image.fromarray(res.astype('uint8'))
+    return image
+
