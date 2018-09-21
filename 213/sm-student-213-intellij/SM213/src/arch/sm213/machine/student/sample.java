@@ -48,7 +48,7 @@ public class CPU extends AbstractSM213CPU {
         switch (opCode) {
             case 0x0:
             case 0xb:
-                long opExt = mem.readIntegerUnaligned (pcVal) & 0xffffffffL;
+                long opExt = mem.readIntegerUnaligned (pcVal);
                 pcVal += 4;
                 insOpExt.set    (opExt);
                 instruction.set (ins[0].value() << 40 | ins[1].value() << 32 | opExt);
@@ -78,21 +78,30 @@ public class CPU extends AbstractSM213CPU {
      */
     @Override protected void execute () throws InvalidInstructionException, MachineHaltException, RegisterSet.InvalidRegisterNumberException, MainMemory.InvalidAddressException
     {
+        int addr;
         switch (insOpCode.get()) {
-            case 0x0: // ld $v, d .............. 0d-- vvvv vvvv
+            case 0x0: // ld $i, d .............. 0d-- iiii iiii
                 reg.set (insOp0.get(), insOpExt.get());
                 break;
             case 0x1: // ld o(rs), rd .......... 1psd  (p = o / 4)
-                reg.set (insOp2.get(), mem.readInteger ((insOp0.get() << 2) + reg.get (insOp1.get())));
+                //r[d] ← m[o=p*4+r[s]]
+                addr = insOp0.get() * 4 + reg.get(insOp1.get());
+                reg.set(insOp2.get(), mem.readInteger(addr));
                 break;
             case 0x2: // ld (rs, ri, 4), rd .... 2sid
-                reg.set (insOp2.get(), mem.readInteger(reg.get(insOp0.get()) + 4 * reg.get(insOp1.get())));
+                // r[d] ← m[r[s]+r[i]*4]
+                addr = reg.get(insOp0.get()) + reg.get(insOp1.get()) * 4;
+                reg.set(insOp2.get(), mem.readInteger(addr));
                 break;
             case 0x3: // st rs, o(rd) .......... 3spd  (p = o / 4)
-                mem.writeInteger ((insOp1.get() << 2) + reg.get (insOp2.get()), reg.get (insOp0.get()));
+                // m[o=p*4+r[d]] ← r[s]
+                addr = insOp1.get() * 4 + reg.get(insOp2.get());
+                mem.writeInteger(addr, reg.get(insOp0.get()));
                 break;
             case 0x4: // st rs, (rd, ri, 4) .... 4sdi
-                mem.writeInteger(reg.get(insOp1.get()) + 4 * reg.get(insOp2.get()), reg.get(insOp0.get()));
+                // m[r[d]+r[i]*4] ← r[s]
+                addr = reg.get(insOp1.get()) + reg.get(insOp2.get())*4;
+                mem.writeInteger(addr, reg.get(insOp0.get()));
                 break;
             case 0x6: // ALU ................... 6-sd
                 switch (insOp0.get()) {
@@ -124,18 +133,17 @@ public class CPU extends AbstractSM213CPU {
                         throw new InvalidInstructionException();
                 }
                 break;
-            case 0x7: // sh[rl] $i,rd ............. 7dii
-                if (insOpImm.get() > 0) {
-                    // please work you thing
-                    reg.set (insOp0.get(), reg.get (insOp0.get()) << insOpImm.get());
-                    //
+            case 0x7: // sh? $i,rd ............. 7dii
+                int amount = insOpImm.get();
+                if (amount < 0) {
+                    reg.set(insOp0.get(), reg.get(insOp0.get()) >> -amount);
+                } else {
+                    reg.set(insOp0.get(), reg.get(insOp0.get()) << amount);
                 }
-                else
-                    // shr $i,rd ............. 7dii
-                    reg.set (insOp0.get(), reg.get (insOp0.get()) >> -insOpImm.get());
                 break;
             case 0xf: // halt or nop ............. f?--
                 if (insOp0.get() == 0)
+                    // halt .......................... f0--
                     throw new MachineHaltException();
                 else if (insOp0.getUnsigned() == 0xf)
                     // nop ........................... ff--
