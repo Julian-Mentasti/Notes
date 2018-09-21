@@ -120,9 +120,12 @@ def hybrid(im1, im2):
 def doEverything():
     dog = Image.open("dog.jpg")
     cat = Image.open("cat.bmp")
+    
+
     res = hybrid(dog, cat)
     res = res.clip(min=0)
     res = res.clip(max=255)
+    result = ((res - res.min()) * (1/(res.max() - res.min()) * 255)).astype('uint8')
     image = Image.fromarray(res.astype('uint8'))
     return image
 
