@@ -74,8 +74,7 @@ def lowPass(im, sigma):
 """
 Returns a highpass image array of the provided image
 """
-def highPass(im):
-    sigma = 6
+def highPass(im, sigma):
     lowPassArray = lowPass(im, sigma)
 
     array = np.asarray(im)
@@ -106,22 +105,38 @@ def highPass(im):
 
 """
 Returns a hybrid image of the first image as a low pass and the second as highpass 
+usign a sigma of 6
 """
 def hybrid(im1, im2):
 
     im1_lp = lowPass(im1, 6)
-    im2_hp = highPass(im2)
+    im2_hp = highPass(im2, 6)
 
     final = im1_lp + im2_hp 
 
     return final
+
+
 """
-Returns a hybrid image composed of im1 as a lowPass and im2 as a highPass
+Returns a hybrid image of the first image as a low pass and the second as highpass
+using a custom sigma
 """
-def makeHybrid(im1, im2):
+def custom_hybrid(im1, im2, sigma):
+
+    im1_lp = lowPass(im1, sigma)
+    im2_hp = highPass(im2, sigma)
+
+    final = im1_lp + im2_hp 
+
+    return final
+
+"""
+Returns a hybrid image composed of im1 as a lowPass and im2 as a highPass using sigma
+"""
+def makeHybrid(im1, im2, sigma):
     im1_ar = np.asarray(im1)
     im2_ar = np.asarray(im2)
-    res = hybrid(im1_ar, im2_ar)
+    res = custom_hybrid(im1_ar, im2_ar, sigma)
     image = Image.fromarray(res.astype('uint8'))
     return image
 
