@@ -6,28 +6,25 @@ from scipy import signal
 """
 Returns an nxn array whose values add up to 1, given that n is odd.
 else returns an AssertionError.
-:param n: integer
-:return: numpy array, or AssertionError
 """
 def boxfilter(n):
     assert ((n%2) != 0), "Dimension must be odd"
     return np.full((n,n),(1/(n*n)))
-
-
 
 """
 Returns a 1d gaussian array with length (6*sigma) rounded up to the next odd integer
 """
 def gauss1d(sigma):
     assert (sigma>=0), "Sigma cannot be smaller or equal to zero."
-    sigma = float(sigma)
-    length = 6*sigma
+    length = math.ceil(6*sigma)
+
     if (length%2)== 0:
         length = length + 1
 
-    edges = int(length)/2
+    edges = math.floor(length/2)
     arange = np.arange(-edges, edges+1)
     result = np.exp(-arange**2/(2*sigma**2))
+    result /= np.sum(result)
     return result
 
 """
@@ -54,7 +51,6 @@ def gaussconvolve2d(array,sigma):
 Returns a lowpass image array of the provided image using the provided sigma
 """
 def lowPass(im, sigma):
-    #red, green, blue = im.split()
     array = np.asarray(im)
     blue = array[:,:,0]
     green = array[:,:,1]
@@ -71,8 +67,8 @@ def lowPass(im, sigma):
     rgbArray[...,0] = blue
     rgbArray[...,1] = green
     rgbArray[...,2] = red
+    result = np.clip(rgbArray,0,255)
     
-    #image = Image.fromarray(rgbArray)
     return rgbArray
 
 """
@@ -81,29 +77,32 @@ Returns a highpass image array of the provided image
 def highPass(im):
     sigma = 6
     lowPassArray = lowPass(im, sigma)
-    orignal = np.asarray(im)
-    
-    width = orignal.shape[0]
-    height = orignal.shape[1]
 
-    hf_array = (orignal - lowPassArray) # + np.full((width, height, 3), 128)
-    hf_array[hf_array < 0] = 0
-    result = hf_array.astype('uint8')
+    array = np.asarray(im)
+    blue = array[:,:,0]
+    green = array[:,:,1]
+    red =array[:,:,2]
+  
+    width = array.shape[0]
+    height = array.shape[1]
+
+    lpBlue = lowPassArray[:,:,0]
+    lpGreen = lowPassArray[:,:,1]
+    lpRed = lowPassArray[:,:,2]
+
+    rgbArray = np.zeros((width, height,3), 'uint8')
+    rgbArray[...,0] = blue - lpBlue
+    rgbArray[...,1] = green - lpGreen
+    rgbArray[...,2] = red - lpRed
+
+    rgbNarray = np.zeros((width, height, 3), 'uint8')
+    rgbNarray[...,0] = blue
+    rgbNarray[...,1] = green
+    rgbNarray[...,2] = red
+
+    result = rgbArray.astype('uint8')
+    result = np.clip(result,0,255)
     return result
-
-"""
-Returns a highpass image array of the provided image
-"""
-def highPass_filter(im):
-    sigma = 6
-    lowPassArray = lowPass(im, sigma)
-    orignal = np.asarray(im)
-    
-    width = orignal.shape[0]
-    height = orignal.shape[1]
-
-    hf_array = (orignal - lowPassArray)
-    return hf_array
 
 """
 Returns a hybrid image of the first image as a low pass and the second as highpass 
@@ -116,8 +115,20 @@ def hybrid(im1, im2):
     final = im1_lp + im2_hp 
 
     return final
+"""
+Returns a hybrid image composed of im1 as a lowPass and im2 as a highPass
+"""
+def makeHybrid(im1, im2):
+    im1_ar = np.asarray(im1)
+    im2_ar = np.asarray(im2)
+    res = hybrid(im1_ar, im2_ar)
+    image = Image.fromarray(res.astype('uint8'))
+    return image
 
-def doEverything():
+"""
+Returns a hybrid image of a cat and dog
+"""
+def catDog():
     dog = Image.open("dog.jpg")
     cat = Image.open("cat.bmp")
     
