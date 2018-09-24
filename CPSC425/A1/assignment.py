@@ -4,6 +4,13 @@ import math
 from scipy import signal
 
 """
+Assignment 1 CPSC 425
+Julian Mentasti
+e0q1b
+"""
+
+
+"""
 Returns an nxn array whose values add up to 1, given that n is odd.
 else returns an AssertionError.
 """
