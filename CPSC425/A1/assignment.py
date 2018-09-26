@@ -28,6 +28,7 @@ def gauss1d(sigma):
     edges = int(length)/2
     arange = np.arange(-edges, edges+1)
     result = np.exp(-arange**2/(2*sigma**2))
+    print length
     return result
 
 """
@@ -112,6 +113,9 @@ def hybrid(im1, im2):
 
     im1_lp = lowPass(im1, 6)
     im2_hp = highPass(im2)
+    
+    im1_lp = np.clip(im1_lp,0,255)
+    im2_hp = np.clip(im2_hp,0,255)
 
     final = im1_lp + im2_hp 
 
@@ -123,9 +127,8 @@ def doEverything():
     
 
     res = hybrid(dog, cat)
-    res = res.clip(min=0)
-    res = res.clip(max=255)
-    result = ((res - res.min()) * (1/(res.max() - res.min()) * 255)).astype('uint8')
+
+    res = np.clip(res, 0,255)
     image = Image.fromarray(res.astype('uint8'))
     return image
 
