@@ -11,7 +11,7 @@ Returns a list of the original image, followed by its reductions untill they rea
 :Param image: PIL image
 :minsize int: size int
 """
-def makePyramid(image, minsize):
+def MakePyramid(image, minsize):
     lPyramid = [image]
     iSize = image.size[0]
 
@@ -76,17 +76,42 @@ def findTemplate(lPyramid, template, threshold):
     iShrink = template.size[0]/iTemplate_width
 
     #resize the template
-    template = template.resize((iTemplate_width, template.size[1]/iShrink), Image.BICUBIC)
+    template = template.resize((int(iTemplate_width),int(template.size[1]/iShrink)), Image.BICUBIC)
 
+    # original image width
+    imgOriginal = lPyramid[0]
+    iOriginalWdith = imgOriginal.size[0]
     for image in lPyramid:
 
         # apply the template
         iRes = ncc.normxcorr2D(image, template)
+        
+        # get the scale of the image
+        imageWidth = image.size[0]
+        imgScale = imageWidth/iOriginalWdith
 
-        # append the values within the treshold
-        found.append(np.where(iRes >= threshold, 1, 0))
+        # for every row
+        for y_cord in range(len(iRes)):
+            # for every column
+            for x_cord in range(len(iRes[0])):
+                
+                # if the pixel value is above our threshold
+                if iRes[y_cord][x_cord] >= threshold:
+                    
+                    #Scale to resize the image
+                    if (imgScale == 0):
+                        continue
+                    iScale = 1/imgScale
 
-    # start to draw the template
+                    # Get the updated template size
+                    (imgWidth, imgHeight) = template.size
+                    
+                    # calculate the area of the outline for each face
+                    face = (x_cord*iScale, y_cord*iScale, imgWidth*iScale, imgHeight*iScale)
+
+                    #facebook
+                    found.append(face)
+
 
     # Image converted to RGB
     image_c = lPyramid[0].convert("RGB")
@@ -94,33 +119,70 @@ def findTemplate(lPyramid, template, threshold):
     # get the dimensions of the template 
     (width, height) = template.size
 
-    draw = ImageDraw.Draw(image_c)
-    curr_im = 0
-    for image in found:
+    for face in found: 
+        drawOutline(image_c, *face)
 
-        points = np.nonzero(image)
+    image_c.show()
 
-        width /= fShrinking_factor ** curr_im
-        height /= fShrinking_factor ** curr_im
+"""
+Draws a red outline on an image
+:parm image: image object
+:param x: bottom right x cord
+:param y: bottom right y cord
+:param width: width of the box
+:param height: height of the box
+"""
+def drawOutline(image, x, y ,width, height):
+    #Upper left corner
+    x = x - width/2
+    y = y - height/2
 
-        for cord in range(len(found[0])):
-
-            x = points[1][cord] / (0.75) ** curr_im
-            y = points[0][cord] / (0.75) ** curr_im
-
-            draw.rectangle([(x-width/2, y-height/2), (x+width/2, y+height/2)], outline="red")
-
-        curr_im += 1
+    #draw the line
+    draw = ImageDraw.Draw(image)
+    
+    # draw the four lines
+    # left vertical line+
+    draw.line((x,y,x, y+height), fill="red", width=2)
+    # right vertical line
+    draw.line((x+width,y,x+width, y+height), fill="red", width=2)
+    # top horizontal line
+    draw.line((x,y,x+width,y), fill="red", width=2)
+    # bottom horizontal line
+    draw.line((x,y+height, x+width, y+height), fill="red", width=2)
 
     del draw
-    image_c.show()
 
 def main():
     im = Image.open("faces/students.jpg")
     minsize = 20
-    lPyramid = makePyramid(im, minsize)
+    lPyramid = MakePyramid(im, minsize)
     showPyramid(lPyramid)
 
     template = Image.open("faces/template.jpg")
-    res = findTemplate(lPyramid, template,0.5)
-    print(res)
+    findTemplate(lPyramid, template,0.7)
+
+#Will test out the 6 images
+def questionFive(threshold):
+    im1 = Image.open("faces/students.jpg")
+    im2 = Image.open("faces/judybats.jpg")
+    im3 = Image.open("faces/tree.jpg")
+    im4 = Image.open("faces/family.jpg")
+    im5 = Image.open("faces/fans.jpg")
+    im6 = Image.open("faces/sports.jpg")
+
+    template = Image.open("faces/template.jpg")
+    minsize = 20
+    #load the pyramids
+    pyramid1 = MakePyramid(im1, minsize)
+    pyramid2 = MakePyramid(im2, minsize)
+    pyramid3 = MakePyramid(im3, minsize)
+    pyramid4 = MakePyramid(im4, minsize)
+    pyramid5 = MakePyramid(im5, minsize)
+    pyramid6 = MakePyramid(im6, minsize)
+
+    findTemplate(pyramid1, template,threshold)
+    findTemplate(pyramid2, template,threshold)
+    findTemplate(pyramid3, template,threshold)
+    findTemplate(pyramid4, template,threshold)
+    findTemplate(pyramid5, template,threshold)
+    findTemplate(pyramid6, template,threshold)
