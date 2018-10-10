@@ -147,7 +147,7 @@ def main():
     template = Image.open("faces/template.jpg")
     findTemplate(lPyramid, template,0.72)
 
-#Will test out the 6 images
+#Will test out the 6 images with the given parameters
 def questionFive(threshold):
     im1 = Image.open("faces/students.jpg")
     im2 = Image.open("faces/judybats.jpg")
