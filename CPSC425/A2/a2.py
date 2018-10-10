@@ -33,7 +33,7 @@ def MakePyramid(image, minsize):
 Returns a compilation of all the images in lPyramid
 :param lPyramid: List of im images
 """
-def showPyramid(lPyramid): 
+def ShowPyramid(lPyramid): 
 
     # get the total height
     iTotHeight = lPyramid[0].size[1]
@@ -142,10 +142,10 @@ def main():
     im = Image.open("faces/students.jpg")
     minsize = 20
     lPyramid = MakePyramid(im, minsize)
-    showPyramid(lPyramid)
+    ShowPyramid(lPyramid)
 
     template = Image.open("faces/template.jpg")
-    findTemplate(lPyramid, template,0.7)
+    findTemplate(lPyramid, template,0.72)
 
 #Will test out the 6 images
 def questionFive(threshold):
