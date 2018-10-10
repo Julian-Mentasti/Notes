@@ -12,24 +12,20 @@ Returns a list of the original image, followed by its reductions untill they rea
 :minsize int: size int
 """
 def MakePyramid(image, minsize):
-    lPyramid = [image]
-    iSize = image.size[0]
-
-    while (minsize <= iSize):
-        # Grab the smallest image so far
-        imgTail = lPyramid[-1]
-
-        # Get the height and width of the image
-        (iHeight, iWidth) = imgTail.size
-
-        # Resize the image by shrinking the image by fShrinking_factor
-        imgSmallest = imgTail.resize((int(iHeight*fShrinking_factor),int(iWidth*fShrinking_factor)), Image.BICUBIC)
+    lPyramid = []
+    iScale = 1
+    iWidth, iHeight = image.size
+    while (minsize <= min(image.size)*iScale):
         
+        # Resize the image by shrinking the image by scale
+        imgSmallest = image.resize((int(iWidth*iScale),int(iHeight*iScale)), Image.BICUBIC)
+        
+        # Save the scale of each image for when template matching occurs
+        imgSmallest.scale = iScale
+        iScale = iScale * 0.75
+
         # Append the shrunk image to the list
         lPyramid.append(imgSmallest)
-
-        # Get the new smallest size
-        iSize = int(imgSmallest.size[0])
     
     return lPyramid
 
@@ -73,22 +69,15 @@ def findTemplate(lPyramid, template, threshold):
     iTemplate_width = 15
 
     # get the ammount that the image should be scaled down
-    iShrink = template.size[0]/iTemplate_width
+    (iWidth, iHeight) = template.size
 
     #resize the template
-    template = template.resize((int(iTemplate_width),int(template.size[1]/iShrink)), Image.BICUBIC)
-
-    # original image width
-    imgOriginal = lPyramid[0]
-    iOriginalWdith = imgOriginal.size[0]
+    template = template.resize((int(iTemplate_width),int(iHeight*iTemplate_width/iWidth)), Image.BICUBIC)
     for image in lPyramid:
 
         # apply the template
         iRes = ncc.normxcorr2D(image, template)
-        
-        # get the scale of the image
-        imageWidth = image.size[0]
-        imgScale = imageWidth/iOriginalWdith
+
 
         # for every row
         for y_cord in range(len(iRes)):
@@ -97,15 +86,12 @@ def findTemplate(lPyramid, template, threshold):
                 
                 # if the pixel value is above our threshold
                 if iRes[y_cord][x_cord] >= threshold:
-                    
-                    #Scale to resize the image
-                    if (imgScale == 0):
-                        continue
-                    iScale = 1/imgScale
 
                     # Get the updated template size
                     (imgWidth, imgHeight) = template.size
                     
+                    iScale = 1/image.scale
+
                     # calculate the area of the outline for each face
                     face = (x_cord*iScale, y_cord*iScale, imgWidth*iScale, imgHeight*iScale)
 
@@ -171,7 +157,7 @@ def questionFive(threshold):
     im6 = Image.open("faces/sports.jpg")
 
     template = Image.open("faces/template.jpg")
-    minsize = 20
+    minsize = 15
     #load the pyramids
     pyramid1 = MakePyramid(im1, minsize)
     pyramid2 = MakePyramid(im2, minsize)
