@@ -1,4 +1,3 @@
-??? from here until ???END lines may have been inserted/deleted
 # Assignment 2
 ## Julian Mentasti
 ## 90772385 e0q1b
@@ -10,7 +9,17 @@
 >>> minsize = 20
 >>> pyramid = MakePyramid(im, minsize)
 >>> pyramid
-[<PIL.Image.Image image mode=L size=426x443 at 0x7F042AFCF9D0>, <PIL.Image.Image image mode=L size=319x332 at 0x7F042AFCFA10>, <PIL.Image.Image image mode=L size=239x249 at 0x7F042AFCFA50>, <PIL.Image.Image image mode=L size=179x186 at 0x7F042AFCFA90>, <PIL.Image.Image image mode=L size=134x140 at 0x7F042AFCFAD0>, <PIL.Image.Image image mode=L size=101x105 at 0x7F042AFCFB10>, <PIL.Image.Image image mode=L size=75x78 at 0x7F042AFCFB50>, <PIL.Image.Image image mode=L size=56x59 at 0x7F042AFCFB90>, <PIL.Image.Image image mode=L size=42x44 at 0x7F042AFCFBD0>, <PIL.Image.Image image mode=L size=31x33 at 0x7F042AFCFC10>, <PIL.Image.Image image mode=L size=23x24 at 0x7F042AFCFC50>]
+[<PIL.Image.Image image mode=L size=426x443 at 0x7F042AFCF9D0>, 
+<PIL.Image.Image image mode=L size=319x332 at 0x7F042AFCFA10>, 
+<PIL.Image.Image image mode=L size=239x249 at 0x7F042AFCFA50>, 
+<PIL.Image.Image image mode=L size=179x186 at 0x7F042AFCFA90>, 
+<PIL.Image.Image image mode=L size=134x140 at 0x7F042AFCFAD0>, 
+<PIL.Image.Image image mode=L size=101x105 at 0x7F042AFCFB10>, 
+<PIL.Image.Image image mode=L size=75x78 at 0x7F042AFCFB50>, 
+<PIL.Image.Image image mode=L size=56x59 at 0x7F042AFCFB90>, 
+<PIL.Image.Image image mode=L size=42x44 at 0x7F042AFCFBD0>, 
+<PIL.Image.Image image mode=L size=31x33 at 0x7F042AFCFC10>, 
+<PIL.Image.Image image mode=L size=23x24 at 0x7F042AFCFC50>]
 ```
 # Question 3:
 ```python
@@ -92,8 +101,13 @@ have a lower recall rate on some images since some of the faces differ from face
 Recall = (# Relevant found)/(# Relevant)
 
 Recall rate for family: 2/3
+
 Recall rate for fans: 0/3
+
 Recall rate for Judybats: 4/5
+
 Recall rate for sports: 0/2
+
 Recall rate for students: 23/27
+
 Recall rate for tree: 0/0
