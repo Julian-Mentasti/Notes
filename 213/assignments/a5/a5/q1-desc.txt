@@ -1,0 +1,15 @@
+line 37. Read x->x[i]
+line 38. Read a-b.y[i]
+line 39. Read a->b.a
+line 39. Read a->b.a->x[i]
+line 40. Read a->b.a
+line 40. Read a
+line 41. Read a->b.a
+line 41. Read a->b.a->b.y[i]
+Total 8 Reads
+line 37. Write v0
+line 38. Write v1
+line 39. Write v2
+line 40. Write a->b.a
+line 41. Write v3
+Total 5 Reads
