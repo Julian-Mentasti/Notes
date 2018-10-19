@@ -1,18 +1,18 @@
 .pos 0x100
 start:	
-        ld   $sb, r5
-        inca r5
-        gpc  $6, r6                  
+        ld   $sb, r5 # r5 = $sb
+        inca r5 # r5 = r5 + 4
+        gpc  $6, r6 # r6 = 6
         j    main
         halt
 
 .pos 0x200
 main:	
 	deca r5
-	st   r6, (r5)
-	ld   $-12, r1
-	add  r1, r5
-	ld   $a, r0
+	st   r6, (r5) # r5 = r6
+	ld   $-12, r1 # r1 = -12
+	add  r1, r5 # r5 = r5 -12
+	ld   $a, r0 # r0 = &a
 	st   r0, 0x0(r5)
 	ld   $val, r0
 	ld   (r0), r0

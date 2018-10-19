@@ -1,16 +1,16 @@
 .pos 0x100
 start:
-	ld $sb, r5
-	inca    r5
-	gpc $6, r6
-	j main
+	ld $sb, r5 # r5 = $sb
+	inca    r5 # r5 = r5 - 4
+	gpc $6, r6 # r6 = 6
+	j main	# jump to main
 	halt
 	
 f:	
-	deca r5
-	ld $0, r0
-	ld 4(r5), r1
-	ld $0x80000000, r2
+	deca r5 # r5 = r5 - 4
+	ld $0, r0 # r0 = 0
+	ld 4(r5), r1 # r1 = r5[i]
+	ld $0x80000000, r2 # r2 = big num
 f_loop:
 	beq r1, f_end
 	mov r1, r3
