@@ -1,0 +1,1 @@
+the pop() function was freeing the element in the top and then returning a pointer to the freed location, I created a temporary char array that will copy the value and then pop will return the address of the copy and then it will be freed.
