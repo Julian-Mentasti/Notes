@@ -86,7 +86,7 @@ def handle_close(event):
 
 # === Script execution starts here ===
 # imname is the name of the image file that you want to read.
-imname = 'donkey.jpg'
+imname = 'flower.jpg'
 
 # === Read the image
 im = Image.open( imname ).convert('RGB')
