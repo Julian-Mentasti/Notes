@@ -11,8 +11,8 @@ e0q1b
 ### Orginal
 ![Flower Image original](https://i.imgur.com/zikruhM.jpg)
 
-### After removing the lead
-![Flower Image sans leaf](blob:https://imgur.com/d8c75d44-2d6d-46b7-a799-fbc136f9bc1d)
+### After removing the leaf
+![Flower Image sans leaf](https://i.imgur.com/mh8uclT.jpg)
 
 ## Unsuccessfull removal of the Carin
 
