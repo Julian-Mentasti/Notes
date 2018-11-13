@@ -96,10 +96,7 @@ def match(image1,image2):
     """
     im1, keypoints1, descriptors1 = ReadKeys(image1)
     im2, keypoints2, descriptors2 = ReadKeys(image2)
-    threshold = 0.9
-    #
-    # REPLACE THIS CODE WITH YOUR SOLUTION (ASSIGNMENT 5, QUESTION 3)
-    #
+    threshold = 0.65
 
     # array to store the matched pairs
     matches = []
@@ -132,9 +129,75 @@ def match(image1,image2):
         # add the match to the list of matches
         matches.append(match)
 
-    print(len(matches))
+    #use ransac to improve the keypoints
+    matches = RANSAC(matches)
     im3 = DisplayMatches(im1, im2, matches)
     return im3
 
+
+def RANSAC(matches):
+    """
+    Uses the RANSAC algorithm to determine which of the matches are false positives.
+    sizeThreshold will be used as the threshold for size changes between points
+    angleThreshold will be used as the treshold for the shift in angle
+    """
+    sizeThreshold = 0.95 # as a percentage
+    angleThreshold = math.pi/10 # 30 degrees
+    #trials = 1000 # number of trials
+    trials = 10 # number of trials
+    validated_matches = []
+
+    # get the difference of two angles
+    def getAngleChange(angle1, angle2):
+        twoPi = math.pi*2
+        angle1 %= twoPi
+        angle2 %= twoPi
+        angleDiff = ((angle1 - angle2) % twoPi)
+
+        # if the difference in angle is grater than PI, we subtract PI
+        if angleDiff > math.pi:
+            angleDiff -= math.pi
+
+        return angleDiff
+
+    # get the difference in size as a percent (decimal)
+    def getSizeChange(size1, size2):
+        return abs(size1 - size2)
+
+    #for [test_match1, test_match2] in random.sample(matches, trials):
+    for i in range(trials):
+        test_match1, test_match2 = random.choice(matches)
+        changeScale1 = test_match1[2] / test_match2[2]
+        changeOrientation1 = test_match1[3] - test_match2[3]
+        currently_found = []
+
+        #check the rest of the matches
+        for match in matches:
+            # get the difference in angles
+            changeScale2 = match[0][2] / match[1][2]
+
+            # get the difference in sizes
+            changeOrientation2 = match[0][3] - match[1][3]
+
+            # get the difference in angles
+            angleChange = getAngleChange(changeOrientation1, changeOrientation2)
+
+            # get the difference in sizes
+            sizeChange = getSizeChange(changeScale1, changeScale2)
+
+            # if the difference is greater than angleThreshold or sizeThreshold skip the match
+            if angleChange > angleThreshold or sizeChange > sizeThreshold:
+                continue
+
+            #add the match to the found list
+            currently_found.append(match)
+
+        # if we found more valid matches than before, update the valid matches
+        if len(currently_found) > len(validated_matches):
+            validated_matches = currently_found
+
+    print(len(validated_matches))
+    return validated_matches
 #Test run...
-match('scene','basmati')
+#match('scene','basmati')
+match('library', 'library2')
