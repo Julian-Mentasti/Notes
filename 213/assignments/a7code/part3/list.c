@@ -50,8 +50,8 @@ void list_append (struct list* list, element_t element) {
     expand_list (list);
   list->data [list->len] =  element;
   list->len             += 1;
-}
 
+}
 /**
  * Append a[0] .. a[n-1] to end of list.
  */
@@ -119,7 +119,7 @@ int list_len (struct list* list) {
  *    in  is an element from in_list
  */
 void list_map1 (void (*f) (element_t*, element_t), struct list* out_list, struct list* in_list) {
-  for (size i = 0; i < list_len(in_list);++i) {
+  for (size_t i = 0; i < list_len(in_list);++i) {
     element_t element = NULL;
     f(&element, list_get(in_list, i));
     list_append(out_list, element);
@@ -139,7 +139,15 @@ void list_map1 (void (*f) (element_t*, element_t), struct list* out_list, struct
  *    in1  is an element from in_list1
  */
 void list_map2 (void (*f) (element_t*, element_t, element_t), struct list* out_list, struct list* in_list0, struct list* in_list1) {
-  
+  int list0 = list_len(in_list0);
+  int list1 = list_len(in_list1);
+  int max = list0 > list1 ? list1 : list0;
+  for (size_t i=0; i<max; i++) {
+    element_t* out = malloc(sizeof(element_t));
+    f(out, list_get(in_list0, i), list_get(in_list1, i));
+    list_append(out_list, *out);
+    free(out);
+  }
 }
 
 /**
@@ -152,7 +160,9 @@ void list_map2 (void (*f) (element_t*, element_t, element_t), struct list* out_l
  *    in1 is an element from in_list
  */
 void list_foldl (void (*f) (element_t*, element_t, element_t), element_t* out_element_p,  struct list* in_list) {
-  // TODO
+  for (size_t i = 0; i < list_len(in_list); i++) {
+    f(out_element_p, *out_element_p, list_get(in_list, i));
+  }
 }
 
 /**
@@ -165,7 +175,11 @@ void list_foldl (void (*f) (element_t*, element_t, element_t), element_t* out_el
  *    returns true (1) iff in should be included in out_list and 0 otherwise
  */
 void list_filter (int (*f) (element_t), struct list* out_list, struct list* in_list) {
-  // TODO
+  for (size_t i = 0; i < list_len(in_list); i++) {
+    if (f(list_get(in_list, i))){
+      list_append(out_list, list_get(in_list, i));
+    }
+  }
 }
 
 /**
