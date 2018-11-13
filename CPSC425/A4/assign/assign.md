@@ -12,6 +12,7 @@ I chose the threshold 0.65 because it produced 22 points with a high probability
 
 
 _table 1.0_
+
 | Threshold  | Outliers | Inliers | Total Points |  Accuracy % (Inliers/Total) |  Growth (Current Total/Previous Total) |
 |------------|----------|---------|--------------|-----------------------------|----------------------------------------|
 | 0.60       | 0        | 18      | 18           | 1.00                        | -                                      |
