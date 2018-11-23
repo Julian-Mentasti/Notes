@@ -94,6 +94,7 @@ void enterStreet (enum Direction g) {
       } else {
           waitingHistogramOverflow ++;
       }
+      recordWaitingTime(waitingTime);
   }
   Street.count++;
   Street.nCar++;
@@ -107,8 +108,11 @@ void leaveStreet(void) {
     occupancyHistogram[Street.dir][Street.nCar]++;
     if (Street.nCar == 0) {
         Street.dir = oppositeEnd[Street.dir];
-        singalCar(Street.dir, 3);
+        for (int i=0; i<MAX_OCCUPANCY; i++) {
+            singalCar(Street.dir, 1);
+        }
     }
+    singalCar(Street.dir,1);
     uthread_mutex_unlock(Street.mutex);
 }
 
