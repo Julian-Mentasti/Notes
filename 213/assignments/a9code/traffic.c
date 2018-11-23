@@ -29,23 +29,21 @@ enum Direction {NORTH = 0, SOUTH = 1};
 const static enum Direction oppositeEnd [] = {SOUTH, NORTH};
 
 struct Street {
-    int iCars;
-    int iTimer;
-    uthread_mutex_t mutex;
-    uthread_cond_t north;
-    uthread_cond_t south;
-    enum Direction direction;
+  uthread_mutex_t mutex;
+  int nCar;
+  int count;
+  enum Direction dir;
+  uthread_cond_t north;
+  uthread_cond_t south;
 } Street;
 
-struct Street* initializeStreet() {
-    struct Street* street = malloc(sizeof (struct Street));
-    street->mutex = uthread_mutex_create();
-    street->north = uthread_cond_create(street->mutex);
-    street->south = uthread_cond_create(street->mutex);
-    street->direction = 1; // south
-    street->iCars = 0;
-    street->iTimer = 0;
-    return street;
+void initializeStreet(void) {
+  Street.mutex = uthread_mutex_create();
+  Street.north = uthread_cond_create(Street.mutex);
+  Street.south = uthread_cond_create(Street.mutex);
+  Street.dir = 0; // North
+  Street.nCar = 0;
+  Street.count = 0;
 }
 
 #define WAITING_HISTOGRAM_SIZE (NUM_ITERATIONS * NUM_CARS)
@@ -55,63 +53,6 @@ int             waitingHistogramOverflow;
 uthread_mutex_t waitingHistogramMutex;
 int             occupancyHistogram [2] [MAX_OCCUPANCY + 1];
 
-// My Garbage:
-uthread_cond_t uStreetIsNorth;
-// End of my garbage - not really. 
-// it has no end.
-
-// Handle Car Signaling
-void signalCar(struct Street* s, enum Direction d, int n) {
-    for (int i = 0; i < n; i++) {
-        if (d == SOUTH) {
-            uthread_cond_signal(s->south);
-        } else if (d == NORTH) {
-            uthread_cond_signal(s->north);
-        }
-    }
-}
-
-// Handle Car waiting
-void waitDir(struct Street* s, enum Direction d) {
-    if (d == SOUTH) {
-        uthread_cond_wait(s->south);
-    } else if (d == NORTH) {
-        uthread_cond_wait(s->north);
-    }
-}
-
-void enterStreet (struct Street* s, enum Direction g) {
-    uthread_mutex_lock(s->mutex);
-    if (s->iCars == 0) {
-        s->direction = g;
-    } else {
-        int iCurrent_time = s->iTimer;
-        waitDir(s, g);
-        int waitingTime = s->iTimer - iCurrent_time;
-        if (waitingTime < WAITING_HISTOGRAM_SIZE) {
-            waitingHistogram [waitingTime] ++;
-        } else {
-            waitingHistogramOverflow ++ ;
-        }
-    }
-
-    s->iTimer++;
-    s->iCars++;
-    occupancyHistogram[g][s->iTimer]++;
-    uthread_mutex_unlock(s->mutex);
-}
-
-void leaveStreet(struct Street* s) {
-    uthread_mutex_lock(s->mutex);
-    s->iCars--;
-    occupancyHistogram[s->direction][s->iCars]++;
-    if (s->iCars == 0) {
-        s->direction = oppositeEnd[s->direction];
-        signalCar(s, s->direction, 3);
-    }
-    uthread_mutex_unlock(s->mutex);
-}
-
 void recordWaitingTime (int waitingTime) {
   uthread_mutex_lock (waitingHistogramMutex);
   if (waitingTime < WAITING_HISTOGRAM_SIZE)
@@ -120,38 +61,83 @@ void recordWaitingTime (int waitingTime) {
     waitingHistogramOverflow ++;
   uthread_mutex_unlock (waitingHistogramMutex);
 }
-
-void* car (void* av) {
-    struct Street* s = av;
-    enum Direction dir = random() % 2;
-    for (int i = 0; i<NUM_ITERATIONS; i++) {
-        enterStreet(s, dir);
-        for (int i = 0; i < NUM_CARS; i++) {
-            uthread_yield();
-        }
-        leaveStreet(s);
-        for (int i = 0; i < NUM_CARS; i++) {
-            uthread_yield();
+void singalCar(enum Direction d, int n) {
+    for (int i = 0; i < n; i++) {
+        if (d == SOUTH) {
+            uthread_cond_signal(Street.south);
+        } else if (d == NORTH) {
+            uthread_cond_signal(Street.north);
         }
     }
 }
 
-//
-// TODO
-// You will probably need to create some additional procedures etc.
-//
+
+void waitDir(enum Direction d) {
+    if (d == SOUTH) {
+        uthread_cond_wait(Street.south);
+    } else if (d == NORTH) {
+        uthread_cond_wait(Street.north);
+    }
+}
+
+void enterStreet (enum Direction g) {
+  uthread_mutex_lock(Street.mutex);
+  // Julian Start
+  if (Street.nCar==0) {
+      Street.dir = g;
+  } else {
+      int iCurrent_time = Street.count;
+      waitDir(g);
+      int waitingTime = Street.count - iCurrent_time;
+      if (waitingTime < WAITING_HISTOGRAM_SIZE) {
+          waitingHistogram [waitingTime]++;
+      } else {
+          waitingHistogramOverflow ++;
+      }
+  }
+  Street.count++;
+  Street.nCar++;
+  occupancyHistogram[g][Street.count]++;
+  uthread_mutex_unlock(Street.mutex);
+}
+
+void leaveStreet(void) {
+    uthread_mutex_lock(Street.mutex);
+    Street.nCar--;
+    occupancyHistogram[Street.dir][Street.nCar]++;
+    if (Street.nCar == 0) {
+        Street.dir = oppositeEnd[Street.dir];
+        singalCar(Street.dir, 3);
+    }
+    uthread_mutex_unlock(Street.mutex);
+}
+
+void* car(){
+  enum Direction dir = random() % 2;
+  for (int i=0; i<NUM_ITERATIONS; i++){
+    enterStreet((dir+1)%2);
+    for (int i=0; i<CROSSING_TIME; i++) {
+      uthread_yield();
+    }
+    leaveStreet();
+    for (int i=0; i<WAIT_TIME_BETWEEN_CROSSES; i++) {
+      uthread_yield();
+    }
+  }
+}
 
 int main (int argc, char** argv) {
   uthread_init (NUM_CARS);
-  struct Street* street = initializeStreet();
+  initializeStreet();
   uthread_t pt [NUM_CARS];
   waitingHistogramMutex = uthread_mutex_create ();
 
-  for (int i = 0; i<NUM_CARS; i++) {
-      pt[i] = uthread_create(car, street);
+  for (int i=0; i<NUM_CARS; i++) {
+    pt[i] = uthread_create(car,NULL);
   }
-  for (int i = 0; i<NUM_CARS; i++) {
-      uthread_join(pt[i], 0);
+
+  for (int i=0; i<NUM_CARS; i++) {
+    uthread_join(pt[i],0);
   }
   
   printf ("Times with 1 car  going north: %d\n", occupancyHistogram [NORTH] [1]);
@@ -169,4 +155,5 @@ int main (int argc, char** argv) {
   if (waitingHistogramOverflow)
     printf ("  Cars waited for more than %4d cars to enter: %4d time(s)\n",
 	    WAITING_HISTOGRAM_SIZE, waitingHistogramOverflow);
+  printf ("DONE!\n");
 }
