@@ -2,7 +2,7 @@ import numpy as np
 import os
 import glob
 from sklearn.cluster import KMeans
-import matplotlib.pyplot as plt
+from sklearn.preprocessing import normalize
 
 def build_vocabulary(image_paths, vocab_size):
     """ Sample SIFT descriptors, cluster them using k-means, and return the fitted k-means model.
@@ -34,9 +34,11 @@ def build_vocabulary(image_paths, vocab_size):
 
         # TODO: Randomly sample n_each features from descriptors, and store them in features
         chosen = descriptors[np.random.choice(descriptors.shape[0], min(descriptors.shape[0], n_each), replace=False)]
-        for i, desk in enumerate(chosen):
-        	features[count+i] = desk
-        count += 1
+        local_count = 0
+        for j, desk in enumerate(chosen):
+        	features[count+j] = desk
+        	local_count += 1
+        count += local_count
      
     kmeans = KMeans(n_clusters=vocab_size)
     kmeans.fit(features)
@@ -62,26 +64,17 @@ def get_bags_of_sifts(image_paths, kmeans):
     vocab_size = kmeans.cluster_centers_.shape[0]
 
     image_feats = np.zeros((n_image, vocab_size))
-    print(image_feats.shape)
     for i, path in enumerate(image_paths):
         # Load SIFT descriptors
         descriptors = np.loadtxt(path, delimiter=',',dtype=float)
-        #print("descriptors: ", len(descriptors))
-        #print("vocab_size: ", vocab_size)
         # TODO: Assign each descriptor to the closest cluster center
         for descriptor in descriptors:
             idx = kmeans.predict([descriptor])
-            #print(idx)
         # TODO: Build a histogram normalized by the number of descriptors
 
-            image_feats[i][idx] += 1/len(descriptors)
+            image_feats[i][idx] += 1
 
-            plt.hist(image_feats[i], bins=vocab_size)
-            plt.title("path")
-            plt.show()
-
-
-    return image_feats
+    return normalize(image_feats, axis=1, norm='l1')
 
 def sample_images(ds_path, n_sample):
     """ Sample images from the training/testing dataset.

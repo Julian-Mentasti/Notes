@@ -4,7 +4,7 @@
 import numpy as np
 from util import sample_images, build_vocabulary, get_bags_of_sifts
 from classifiers import nearest_neighbor_classify, svm_classify
-
+import matplotlib.pyplot as plt
 #For this assignment, you will need to report performance for sift features on two different classifiers:
 # 1) Bag of sift features and nearest neighbor classifier
 # 2) Bag of sift features and linear SVM classifier
@@ -33,7 +33,10 @@ kmeans = build_vocabulary(train_image_paths, vocab_size=200)
 
 #TODO: You code get_bags_of_sifts function in util.py 
 train_image_feats = get_bags_of_sifts(train_image_paths, kmeans)
-test_image_feats = get_bags_of_sifts(test_image_paths, kmeans)
+for i in len(range(train_image_feats.shape[1])):
+	plt.bar(200, train_image_feats[i])
+	plt.show()
+#test_image_feats = get_bags_of_sifts(test_image_paths, kmeans)
         
 #If you want to avoid recomputing the features while debugging the
 #classifiers, you can either 'save' and 'load' the extracted features
