@@ -5,6 +5,8 @@ import numpy as np
 from util import sample_images, build_vocabulary, get_bags_of_sifts
 from classifiers import nearest_neighbor_classify, svm_classify
 import matplotlib.pyplot as plt
+import random
+
 #For this assignment, you will need to report performance for sift features on two different classifiers:
 # 1) Bag of sift features and nearest neighbor classifier
 # 2) Bag of sift features and linear SVM classifier
@@ -29,15 +31,22 @@ test_image_paths, test_labels = sample_images("sift/test", n_sample=100)
         
 print('Extracting SIFT features\n')
 #TODO: You code build_vocabulary function in util.py
-kmeans = build_vocabulary(train_image_paths, vocab_size=200)
+vocab_size=50
+kmeans = build_vocabulary(train_image_paths, vocab_size=vocab_size)
 
 #TODO: You code get_bags_of_sifts function in util.py 
 train_image_feats = get_bags_of_sifts(train_image_paths, kmeans)
-for i in len(range(train_image_feats.shape[1])):
-	plt.bar(200, train_image_feats[i])
-	plt.show()
-#test_image_feats = get_bags_of_sifts(test_image_paths, kmeans)
-        
+
+images_chosen = random.sample(range(0, vocab_size), 15)
+for image in images_chosen:
+    plt.bar(np.arange(len(train_image_feats[image])), train_image_feats[image])
+    plt.xlabel('Vocabulary', fontsize=10)
+    plt.ylabel('Noarmalized Average', fontsize=10)
+    image_title = train_image_paths[image]
+    found_title = image_title.split("/")[2]
+    plt.title('Average historgram for Category: ' + found_title)
+    plt.show()
+
 #If you want to avoid recomputing the features while debugging the
 #classifiers, you can either 'save' and 'load' the extracted features
 #to/from a file.
