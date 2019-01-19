@@ -5,7 +5,10 @@
 the training image with most similar features. Instead of 1 nearest
 neighbor, you can vote based on k nearest neighbors which will increase
 performance (although you need to pick a reasonable value for k). '''
-
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn import svm
+import numpy as np
 def nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats):
 
     '''
@@ -27,6 +30,15 @@ def nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats)
     	# You can use knn from sci-kit learn.
         # Reference: https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
     '''
+
+    model = KNeighborsClassifier(n_neighbors=7)
+    model.fit(train_image_feats, train_labels)
+    M = test_image_feats.shape[0]
+    predicted_labels = np.zeros((M))
+    # Predict the output
+    for image in range(M):
+        predicted_labels[image] = model.predict([test_image_feats[image]])
+
     return predicted_labels
 
 
@@ -60,5 +72,22 @@ def svm_classify(train_image_feats, train_labels, test_image_feats):
         # Reference: https://scikit-learn.org/stable/modules/svm.html
 
     '''
+
+
+    #Classifiers:
+    
+
+    classifier = OneVsRestClassifier(svm.SVC(C=3.0, kernel='linear', probability=True))
+    classifier.fit(train_image_feats, train_labels)
+    predicted_labels = []
+    for test_image_feat in test_image_feats:
+        # decision_function
+        score = classifier.predict_proba(test_image_feat.reshape(1, -1))
+        s = score[0]
+        m = s.tolist()
+        print("sdfsdf")
+        index_max = max(xrange(len(m)), key=m.__getitem__)
+        predicted_labels.append(index_max)
+
     return predicted_labels
 

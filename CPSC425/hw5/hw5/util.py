@@ -59,23 +59,21 @@ def get_bags_of_sifts(image_paths, kmeans):
     Returns
     -------
     image_feats: an (n_image, vocab_size) matrix, where each row is a histogram.
+   	image_labels: an (n_image) list of image category
     """
     n_image = len(image_paths)
     vocab_size = kmeans.cluster_centers_.shape[0]
-
+    # Placeholder array
     image_feats = np.zeros((n_image, vocab_size))
     for i, path in enumerate(image_paths):
+
         # Load SIFT descriptors
         descriptors = np.loadtxt(path, delimiter=',',dtype=float)
-        # TODO: Assign each descriptor to the closest cluster center
         for descriptor in descriptors:
             idx = kmeans.predict([descriptor])
-        # TODO: Build a histogram normalized by the number of descriptors
-
             image_feats[i][idx] += 1
 
     return normalize(image_feats, axis=1, norm='l1')
-
 def sample_images(ds_path, n_sample):
     """ Sample images from the training/testing dataset.
 
@@ -93,7 +91,6 @@ def sample_images(ds_path, n_sample):
     # Grab a list of paths that matches the pathname
     files = glob.glob(os.path.join(ds_path, "*", "*jpg.txt"))
     n_files = len(files)
-
     if n_sample == None:
         n_sample = n_files
 
@@ -111,4 +108,35 @@ def sample_images(ds_path, n_sample):
         labels[i] = np.argwhere(np.core.defchararray.equal(classes, folder))[0,0]
 
     return image_paths, labels
+
+def get_average_hist(labels, image_histograms):
+	"""Get the average histogram for each category
+
+	Parameters
+	----------
+	labels: a list of category labels for the image_histograms
+	image_histograms: a (n_image, vocab_size) matrix
+
+	Returns
+	-------
+	average_histogram: an (15, Vocab_size) matrix
+
+	"""
+	#place to store the visual words
+	average_histogram = np.zeros((15, image_histograms.shape[1]))
+	# dictionary to keep track of the indicies
+	dictionary = {}
+	loop_count = 0
+	# for each label check if we have seen it before, if so add the histograms to the appropriate place
+	# else make a new position to store the visual words
+	for i, label in enumerate(labels):
+		if label in dictionary:
+			average_histogram[dictionary[label]] += image_histograms[i]
+		else:
+			dictionary[label] = loop_count
+			loop_count += 1
+			average_histogram[dictionary[label]] += image_histograms[i]
+
+	return normalize(average_histogram, axis=1, norm='l1')
+
 
