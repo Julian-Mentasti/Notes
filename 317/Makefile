@@ -1,8 +1,6 @@
 all: CSftp.jar
 CSftp.jar: CSftp.java
 	javac CSftp.java
-	javac FatalException.java
-	javac NonFatalException.java
 	jar cvfe CSftp.jar CSftp *.class
 
 
